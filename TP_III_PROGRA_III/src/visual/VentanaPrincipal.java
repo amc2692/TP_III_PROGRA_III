@@ -22,6 +22,7 @@ public class VentanaPrincipal {
 	private JTextField textNombre;
 	private JTextField textMontoReserva;
 	private JButton buttonCrearReserva;
+	private JButton buttonVerReservas;
 	
 	
 	public VentanaPrincipal() {
@@ -32,7 +33,7 @@ public class VentanaPrincipal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Sistema de Reservas: Sala The Bunker");
 		frame.setBounds(100, 100, 450, 490);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -112,6 +113,11 @@ public class VentanaPrincipal {
 		buttonCrearReserva = new JButton("CREAR RESERVA");
 		buttonCrearReserva.setBounds(10, 310, 226, 23);
 		frame.getContentPane().add(buttonCrearReserva);
+		
+		buttonVerReservas = new JButton("VER RESERVAS");
+		buttonVerReservas.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		buttonVerReservas.setBounds(128, 385, 157, 23);
+		frame.getContentPane().add(buttonVerReservas);
 		frame.setVisible(true);
 	}
 
@@ -152,7 +158,12 @@ public class VentanaPrincipal {
 	public JButton getButtonCrearReserva() {
 		return buttonCrearReserva;
 	}
-	
-	
-	
+
+	public JTextField getMontoReserva() {
+		return textMontoReserva;
+	}
+
+	public JButton getButtonVerReservas() {
+		return buttonVerReservas;
+	}
 }
