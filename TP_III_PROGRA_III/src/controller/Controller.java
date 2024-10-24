@@ -6,17 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-import model.NegocioSala;
+import model.SalaEnsayos;
 import visual.VentanaPrincipal;
 
 public class Controller {
 	private VentanaPrincipal interfazUsuario;
-	private NegocioSala salaDeEnsayo;
+	private SalaEnsayos salaDeEnsayo;
 	
 	
 	public Controller() {
 		interfazUsuario = new VentanaPrincipal();
-		salaDeEnsayo = new NegocioSala();
+		salaDeEnsayo = new SalaEnsayos();
 		salaDeEnsayo.setearReservasDePrueba();
 		
 		inicializarFuncionalidadInterfaz();

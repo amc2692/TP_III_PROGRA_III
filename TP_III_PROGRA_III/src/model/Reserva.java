@@ -39,10 +39,7 @@ public class Reserva {
 	public LocalDate getFechaReserva() {
 		return fechaReserva;
 	}
-
-
-
-
+	
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

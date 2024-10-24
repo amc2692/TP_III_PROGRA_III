@@ -3,35 +3,35 @@ package model;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class NegocioSala {
-	private HashMap<String, Reserva> conjuntoDeReservas;
+public class SalaEnsayos {
+	private HashMap<String, Reserva> listaDeReservas;
 	
-	public NegocioSala() {
-		conjuntoDeReservas = new HashMap<String, Reserva>();
+	public SalaEnsayos() {
+		listaDeReservas = new HashMap<String, Reserva>();
 	}
 	
 	public void registrarReserva(LocalDate dia, String nombreBanda, int horaDesde, int horaHasta, int monto, LocalDate fechaReserva){
-		if(conjuntoDeReservas.containsKey(nombreBanda)) {
+		if(listaDeReservas.containsKey(nombreBanda)) {
 			throw new RuntimeException("la banda ya se encuentra en la lista de reservas");
 		}
 		else {
 			Reserva nuevaReserva = new Reserva(nombreBanda, horaDesde, horaHasta, monto, fechaReserva);
-			conjuntoDeReservas.put(nombreBanda, nuevaReserva);
+			listaDeReservas.put(nombreBanda, nuevaReserva);
 		}
 	}
 	
 	public void printReservas() {
-		for(String s: conjuntoDeReservas.keySet()) {
-			System.out.println(conjuntoDeReservas.get(s));
+		for(String s: listaDeReservas.keySet()) {
+			System.out.println(listaDeReservas.get(s));
 		}
 	}
 
 	public HashMap<String, Reserva> getConjuntoDeReservas() {
-		return conjuntoDeReservas;
+		return listaDeReservas;
 	}
 	
 	public Reserva getReserva(String nombreBanda) {
-		return conjuntoDeReservas.get(nombreBanda);
+		return listaDeReservas.get(nombreBanda);
 	}
 	
 	
@@ -41,12 +41,16 @@ public class NegocioSala {
 		registrarReserva(null, "Periphery", 8, 12, 20000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Vola", 10, 17, 13000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Tool", 11, 17, 21000, LocalDate.of(2024, 10, 23));
-		registrarReserva(null, "Bring Me The Horizon", 0, 7, 15000, LocalDate.of(2024, 10, 23));
+		registrarReserva(null, "Bring Me The Horizon", 0, 4, 15000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Fit For An autopsy", 13, 17, 17000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Jinjer", 17, 19, 16000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Mudvayne", 15, 22, 13000, LocalDate.of(2024, 10, 23));
 		registrarReserva(null, "Thy Art Is Murder", 20, 23, 11100, LocalDate.of(2024, 10, 23));
+		registrarReserva(null, "Slipknot", 2, 4, 13000, LocalDate.of(2024, 10, 23));
+		registrarReserva(null, "Rammstein", 2, 5, 17000, LocalDate.of(2024, 10, 23));
+		registrarReserva(null, "Trivium", 1, 4, 13000, LocalDate.of(2024, 10, 23));
+		registrarReserva(null, "Soil", 5, 10, 11000, LocalDate.of(2024, 10, 23));
+	
 	}
-
 	
 }
