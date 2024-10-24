@@ -2,23 +2,23 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-import org.w3c.dom.events.EventException;
-
+import model.NegocioSala;
 import visual.VentanaPrincipal;
 
 public class Controller {
 	private VentanaPrincipal interfazUsuario;
-	private Sistema sistemaReservas;
+	private NegocioSala salaDeEnsayo;
 	
 	
 	public Controller() {
 		interfazUsuario = new VentanaPrincipal();
-		sistemaReservas = new Sistema();
+		salaDeEnsayo = new NegocioSala();
+		salaDeEnsayo.setearReservasDePrueba();
+		
 		inicializarFuncionalidadInterfaz();
 		
 	}
@@ -32,29 +32,9 @@ public class Controller {
 			}
 		});
 		
-		interfazUsuario.getButtonVerReservas().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(sistemaReservas.listaDeReservas);
-			}
-		});
-		
 		interfazUsuario.getButtonCrearReserva().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!interfazUsuario.getTextNombre().getText().isEmpty() 
-						&& !interfazUsuario.getTextMontoReserva().getText().isEmpty()) {
-					
-						try {
-							crearReserva();
-						} catch (Exception e1) {
-							JOptionPane.showMessageDialog(null, "Ya se encuentra registrada la banda");
-						}
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Error al cargar la reserva");
-				}
-				
-				setearDeafultBoxTextos();
+				JOptionPane.showInternalMessageDialog(null, "Not implemented yet!");
 			}
 		});
 		interfazUsuario.getBoxMes().addActionListener(new ActionListener() {
@@ -66,6 +46,11 @@ public class Controller {
 		interfazUsuario.getBoxHoraDesde().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actualizarBoxHasta();
+			}
+		});
+		interfazUsuario.getButtonPrintReservas().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				salaDeEnsayo.printReservas();
 			}
 		});
 		
@@ -130,27 +115,6 @@ public class Controller {
 	private void cargarBoxes() {
 		cargarBoxMes();
 		cargarBoxDesdeHasta();
-	}
-	
-	private void setearDeafultBoxTextos() {
-		interfazUsuario.getTextNombre().setText(null);
-		interfazUsuario.getTextMontoReserva().setText(null);
-		interfazUsuario.getBoxDia().setSelectedIndex(0);
-		interfazUsuario.getBoxMes().setSelectedIndex(0);
-		interfazUsuario.getBoxHoraDesde().setSelectedIndex(0);
-		interfazUsuario.getBoxHoraHasta().setSelectedIndex(0);
-	}
-	
-	private void crearReserva() {
-		String nombreReserva = interfazUsuario.getTextNombre().getText();
-		int monto = Integer.parseInt( interfazUsuario.getMontoReserva().getText());
-		int horarioDesde = (int) interfazUsuario.getBoxHoraDesde().getSelectedItem();
-		int horarioHasta = (int) interfazUsuario.getBoxHoraHasta().getSelectedItem();
-		int mes = interfazUsuario.getBoxMes().getSelectedIndex();
-		int dia = (int) interfazUsuario.getBoxDia().getSelectedItem();
-		LocalDate fechaReserva = LocalDate.of(2024, mes, dia);
-		sistemaReservas.crearReserva(nombreReserva, horarioDesde, horarioHasta, monto, fechaReserva);
-	
 	}
 	
 }

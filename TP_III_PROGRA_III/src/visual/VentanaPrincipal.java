@@ -1,16 +1,12 @@
 package visual;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal {
 	private JFrame frame;
@@ -22,7 +18,7 @@ public class VentanaPrincipal {
 	private JTextField textNombre;
 	private JTextField textMontoReserva;
 	private JButton buttonCrearReserva;
-	private JButton buttonVerReservas;
+	private JButton buttonPrintReservas;
 	
 	
 	public VentanaPrincipal() {
@@ -33,7 +29,7 @@ public class VentanaPrincipal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Sistema de Reservas: Sala The Bunker");
+		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 490);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -114,10 +110,9 @@ public class VentanaPrincipal {
 		buttonCrearReserva.setBounds(10, 310, 226, 23);
 		frame.getContentPane().add(buttonCrearReserva);
 		
-		buttonVerReservas = new JButton("VER RESERVAS");
-		buttonVerReservas.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		buttonVerReservas.setBounds(128, 385, 157, 23);
-		frame.getContentPane().add(buttonVerReservas);
+		buttonPrintReservas = new JButton("PRINT RESERVAS");
+		buttonPrintReservas.setBounds(10, 344, 226, 23);
+		frame.getContentPane().add(buttonPrintReservas);
 		frame.setVisible(true);
 	}
 
@@ -158,12 +153,8 @@ public class VentanaPrincipal {
 	public JButton getButtonCrearReserva() {
 		return buttonCrearReserva;
 	}
-
-	public JTextField getMontoReserva() {
-		return textMontoReserva;
-	}
-
-	public JButton getButtonVerReservas() {
-		return buttonVerReservas;
+	
+	public JButton getButtonPrintReservas() {
+		return buttonPrintReservas;
 	}
 }
