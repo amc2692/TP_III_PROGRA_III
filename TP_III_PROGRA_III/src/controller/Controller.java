@@ -2,11 +2,14 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import model.SalaEnsayos;
+import serializable.Escritura;
+import serializable.Lectura;
 import visual.VentanaPrincipal;
 
 public class Controller {
@@ -17,14 +20,14 @@ public class Controller {
 	public Controller() {
 		interfazUsuario = new VentanaPrincipal();
 		salaDeEnsayo = new SalaEnsayos();
-		salaDeEnsayo.setearReservasDePrueba();
+		salaDeEnsayo = Lectura.leerDataSalaEnsayos();
 		
-		inicializarFuncionalidadInterfaz();
+		inicializarInterfazUsuario();
 		
 	}
 
 
-	private void inicializarFuncionalidadInterfaz() {
+	private void inicializarInterfazUsuario() {
 		
 		interfazUsuario.getButtonSalir().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -34,7 +37,8 @@ public class Controller {
 		
 		interfazUsuario.getButtonCrearReserva().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showInternalMessageDialog(null, "Not implemented yet!");
+				crearReserva();
+				Escritura.crearFicheroDatosSala(salaDeEnsayo);	
 			}
 		});
 		interfazUsuario.getBoxMes().addActionListener(new ActionListener() {
@@ -116,5 +120,17 @@ public class Controller {
 		cargarBoxMes();
 		cargarBoxDesdeHasta();
 	}
+	
+	private void crearReserva() {
+		String nombreBanda = interfazUsuario.getTextNombre().getText();
+		int horaDesde = (int) interfazUsuario.getBoxHoraDesde().getSelectedItem();
+		int horaHasta = (int) interfazUsuario.getBoxHoraHasta().getSelectedItem();
+		double monto = Double.valueOf(interfazUsuario.getTextMontoReserva().getText());
+		LocalDate fecha =  LocalDate.of(2024, interfazUsuario.getBoxMes().getSelectedIndex()+1, 
+											  interfazUsuario.getBoxDia().getSelectedIndex()+1);
+		salaDeEnsayo.registrarReserva(nombreBanda, horaDesde, horaHasta, monto, fecha);
+	}
+	
+	
 	
 }

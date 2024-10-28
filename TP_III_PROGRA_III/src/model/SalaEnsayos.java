@@ -10,9 +10,9 @@ public class SalaEnsayos {
 		listaDeReservas = new HashMap<String, Reserva>();
 	}
 	
-	public void registrarReserva(LocalDate dia, String nombreBanda, int horaDesde, int horaHasta, int monto, LocalDate fechaReserva){
+	public void registrarReserva(String nombreBanda, int horaDesde, int horaHasta, double monto, LocalDate fechaReserva){
 		if(listaDeReservas.containsKey(nombreBanda)) {
-			throw new RuntimeException("la banda ya se encuentra en la lista de reservas");
+			throw new RuntimeException("La banda ya se encuentra en la lista de reservas");
 		}
 		else {
 			Reserva nuevaReserva = new Reserva(nombreBanda, horaDesde, horaHasta, monto, fechaReserva);
@@ -35,6 +35,7 @@ public class SalaEnsayos {
 	}
 	
 	
+	/*
 	public void setearReservasDePrueba() {
 		
 		registrarReserva(null, "Tesseract", 7, 10, 16000, LocalDate.of(2024, 10, 23));
@@ -52,5 +53,6 @@ public class SalaEnsayos {
 		registrarReserva(null, "Soil", 5, 10, 11000, LocalDate.of(2024, 10, 23));
 	
 	}
+	*/
 	
 }
