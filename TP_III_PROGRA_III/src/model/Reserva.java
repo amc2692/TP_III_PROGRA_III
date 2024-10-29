@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Reserva {
-	
+public class Reserva implements Serializable{
+
+	private static final long serialVersionUID = 2L;
 	private String nombreBanda;
 	private int horaDesde;
 	private int horaHasta;

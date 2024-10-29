@@ -10,16 +10,17 @@ public class Solver {
 	
 	
 	
-	
-	public static void marcarHorarios(ArrayList<String> horarios, Reserva reserva) {
-		if(horarioEstaLibre(horarios, reserva) && !horarios.contains(reserva.getNombreBanda())) {
+	//SI EL HORARIO ESTA LIBRE, REGISTRA LA BANDA EN EL HORARIO QUE PIDIO
+	public static void marcarHorarios(ArrayList<String> arregloDeHoras, Reserva reserva) {
+		if(horarioEstaLibre(arregloDeHoras, reserva) && !arregloDeHoras.contains(reserva.getNombreBanda())) {
 			for(int i = reserva.getHoraDesde(); i< reserva.getHoraHasta(); i++) {
-				horarios.remove(i);
-				horarios.add(i, reserva.getNombreBanda());
+				arregloDeHoras.remove(i);
+				arregloDeHoras.add(i, reserva.getNombreBanda());
 			}
 		}
 	}
 	
+	//VERIFICA QUE EL HORARIO DE RESERVA PEDIDO NO ESTE OCUPADO
 	public static boolean horarioEstaLibre(ArrayList<String> horarios, Reserva reserva) {
 		boolean flag = true;
 		for(int i = reserva.getHoraDesde(); i< reserva.getHoraHasta()-1; i++){
@@ -28,8 +29,10 @@ public class Solver {
 		return flag;
 	}
 	
-	public static ArrayList<String> setearHorario() {
-		ArrayList<String> horario = new ArrayList<String>();
+	//CREA UN ARREGLO, CADA INDICE REPRESENTA UN HORARIO DE UN DIA 
+	// EJEMPLO INDICE 11 = 11AM  
+	public static ArrayList<String> crearArregloDeHoras() {
+		ArrayList<String> horario = new ArrayList<String>(24);
 		for(int i = 0; i < 24; i++ ) {
 			horario.add("-");
 		}
@@ -38,12 +41,12 @@ public class Solver {
 	
 
 	//CONTROLAR ESTE METODO
-	public static Set<ArrayList<String>> crearSoluciones(HashMap<String, Reserva> listaDeReservas){
+	private static Set<ArrayList<String>> crearSoluciones(HashMap<String, Reserva> listaDeReservas){
 		Set<ArrayList<String>> listaDeSoluciones = new HashSet<ArrayList<String>>();	
 		Random rand = new Random();
 		//
-		while(listaDeSoluciones.size() < listaDeReservas.size()) {
-			ArrayList<String> solucionPosible = Solver.setearHorario();
+		while(listaDeSoluciones.size() < 10) {
+			ArrayList<String> solucionPosible = Solver.crearArregloDeHoras();
 			ArrayList<String> arrayBandasRegistradas = mapToArray(listaDeReservas);
 			
 			while(0 < arrayBandasRegistradas.size ()) {

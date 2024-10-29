@@ -11,20 +11,19 @@ public class Escritura {
 	
 	
 	
-	public static void crearFicheroDatosSala(SalaEnsayos sala) {
-
-		try (FileOutputStream fos = new FileOutputStream("datosSala.txt");
-				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
-			oos.writeObject(sala);
-
+	public static void guardarDatosSalaEnsayos(SalaEnsayos sala) {
+		try (FileOutputStream fos = new FileOutputStream("datosSalaEnsayos.txt"); 
+			 ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				oos.writeObject(sala);
+			
 		} catch (FileNotFoundException e) {
-			System.out.println("Fichero no encontrado");
-
+			System.out.println("Escritura: Fichero no encontrado");
+		
 		} catch (IOException e) {
-			System.out.println("No se puede acceder al fichero");
+			System.out.println("Escritura: No se puede acceder al fichero");
 		}
 		System.out.println("Ok");
+		
 	}
 	
 	

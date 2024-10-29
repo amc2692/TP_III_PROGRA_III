@@ -1,9 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class SalaEnsayos {
+public class SalaEnsayos implements Serializable{
+	
+	private static final long serialVersionUID = 2L;
 	private HashMap<String, Reserva> listaDeReservas;
 	
 	public SalaEnsayos() {
@@ -26,7 +29,7 @@ public class SalaEnsayos {
 		}
 	}
 
-	public HashMap<String, Reserva> getConjuntoDeReservas() {
+	public HashMap<String, Reserva> geListaDeReservas() {
 		return listaDeReservas;
 	}
 	

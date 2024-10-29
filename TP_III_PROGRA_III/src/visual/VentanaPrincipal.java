@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class VentanaPrincipal {
 	private JFrame frame;
@@ -19,6 +21,8 @@ public class VentanaPrincipal {
 	private JTextField textMontoReserva;
 	private JButton buttonCrearReserva;
 	private JButton buttonPrintReservas;
+	private JButton buttonBuscarMejorSolucion;
+	private JTextArea textArea;
 	
 	
 	public VentanaPrincipal() {
@@ -30,12 +34,12 @@ public class VentanaPrincipal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 490);
+		frame.setBounds(100, 100, 450, 659);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		buttonSalir = new JButton("SALIR");
-		buttonSalir.setBounds(167, 417, 89, 23);
+		buttonSalir.setBounds(167, 586, 89, 23);
 		frame.getContentPane().add(buttonSalir);
 		
 		JLabel lblNewLabel = new JLabel("Nombre ");
@@ -113,6 +117,17 @@ public class VentanaPrincipal {
 		buttonPrintReservas = new JButton("PRINT RESERVAS");
 		buttonPrintReservas.setBounds(10, 344, 226, 23);
 		frame.getContentPane().add(buttonPrintReservas);
+		
+		buttonBuscarMejorSolucion = new JButton("BUSCAR MEJOR SOLUCION");
+		buttonBuscarMejorSolucion.setBounds(10, 378, 226, 23);
+		frame.getContentPane().add(buttonBuscarMejorSolucion);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 412, 414, 87);
+		frame.getContentPane().add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		frame.setVisible(true);
 	}
 
@@ -157,4 +172,14 @@ public class VentanaPrincipal {
 	public JButton getButtonPrintReservas() {
 		return buttonPrintReservas;
 	}
+
+	public JButton getButtonBuscarMejorSolucion() {
+		return buttonBuscarMejorSolucion;
+	}
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+	
+	
 }
